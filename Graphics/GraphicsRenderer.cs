@@ -8,6 +8,8 @@ namespace JamGame.Graphics;
 
 public class GraphicsRenderer
 {
+    private static bool IsSDLInitialized = false;
+    
     private Color _rendererColor;
     private IntPtr _sdlRenderer;
     
@@ -15,18 +17,8 @@ public class GraphicsRenderer
     {
         get
         {
-            SDL_BlendMode blendMode;
-            SDL_GetRenderDrawBlendMode(_sdlRenderer, out blendMode);
-            return blendMode switch
-            {
-                SDL_BlendMode.SDL_BLENDMODE_NONE => BlendMode.None,
-                SDL_BlendMode.SDL_BLENDMODE_BLEND => BlendMode.Blend,
-                SDL_BlendMode.SDL_BLENDMODE_ADD => BlendMode.Add,
-                SDL_BlendMode.SDL_BLENDMODE_MOD => BlendMode.Mod,
-                SDL_BlendMode.SDL_BLENDMODE_INVALID => BlendMode.None,
-                SDL_BlendMode.SDL_BLENDMODE_MUL => BlendMode.Add,
-                _ => throw new ArgumentOutOfRangeException()
-            };
+            SDL_GetRenderDrawBlendMode(_sdlRenderer, out var blendMode);
+            return (BlendMode)blendMode;
         }
         set
         {
@@ -86,9 +78,10 @@ public class GraphicsRenderer
 
     internal GraphicsRenderer(IntPtr window)
     {
-        _sdlRenderer = SDL_CreateRenderer(window, -1, SDL_RendererFlags.SDL_RENDERER_ACCELERATED);
+        _sdlRenderer = SDL_CreateRenderer(window, -1, SDL_RendererFlags.SDL_RENDERER_ACCELERATED | SDL_RendererFlags.SDL_RENDERER_PRESENTVSYNC);
         if (_sdlRenderer == IntPtr.Zero)
             ConsoleLogger.LogFatal("WindowHandler", $"Failed to create renderer for window with id: {SDL_GetWindowID(window)}. See more in: {SDL_GetError()}");
+        SDL_RenderSetVSync(_sdlRenderer, 60); 
     } 
 
     internal void RenderComplete() 

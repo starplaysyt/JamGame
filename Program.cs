@@ -1,4 +1,6 @@
 ﻿using System;
+using JamGame.Core;
+using JamGame.Game;
 using JamGame.Graphics;
 using SDL2;
 using static SDL2.SDL;
@@ -13,11 +15,11 @@ namespace JamGame
 
             bool isRunning = true;
             
-            WindowContext context = new WindowContext();
-
+            LayerController lc = new LayerController();
+            
             while (isRunning)
             {
-                while (context.GetSDLEvent(out var evt) != 0)
+                while (WindowContext.GetSDLEvent(out var evt) != 0)
                 {
                     if(evt.type == SDL_EventType.SDL_QUIT)
                     {
@@ -25,8 +27,19 @@ namespace JamGame
                     }
                     //Event handling block
                 }
+
+                WindowContext.Renderer.RendererColor = new Color(255, 0, 0);
+
+                WindowContext.Renderer.DrawLine(10, 10, 100, 100);
                 
+                lc.DrawLayers();
+                
+                WindowContext.Renderer.RendererColor = new Color(255, 0, 255);
+                WindowContext.Renderer.RenderComplete();
+
                 //Rendering block
+
+                //VSYNC controller
             }
         }
     }

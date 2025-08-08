@@ -16,8 +16,12 @@
       </Reference>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Assets\" />
+    </ItemGroup>
+
     <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-      <Exec Command="xcopy &quot;$(ProjectDir)libs\*&quot; &quot;$(TargetDir)&quot; /Y /I" />
+      <Exec Command="xcopy &quot;$(ProjectDir)libs\*&quot; &quot;$(TargetDir)&quot; /Y /I&#xA;xcopy &quot;$(ProjectDir)Assets\*&quot; &quot;$(TargetDir)\Assets&quot; /Y /I" />
     </Target>
 
 </Project>

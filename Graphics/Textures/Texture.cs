@@ -12,7 +12,7 @@ public class Texture
     public IntPtr SDLTexture { get; private set; } 
     
     /// <summary>
-    /// Contains textures' actual parameters, as they is
+    /// Contains textures' actual parameters, as they are
     /// </summary>
     public Rectangle TextureParameters { get; private set; }
     
