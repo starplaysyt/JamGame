@@ -19,6 +19,10 @@ namespace JamGame
             {
                 while (context.GetSDLEvent(out var evt) != 0)
                 {
+                    if(evt.type == SDL_EventType.SDL_QUIT)
+                    {
+                        isRunning = false;
+                    }
                     //Event handling block
                 }
                 
