@@ -8,5 +8,13 @@ public class Character
 
     public Character()
     {
+        _statistic = new Statistic();
+        _inventory = new Inventory();
+        _position = new CharacterPosition();
     }
+
+
+    
+    public Inventory Inventory => _inventory;
+    
 }
