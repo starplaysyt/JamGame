@@ -1,4 +1,5 @@
 ﻿using System;
+using JamGame.Graphics;
 using SDL2;
 using static SDL2.SDL;
 
@@ -12,13 +13,11 @@ namespace JamGame
 
             bool isRunning = true;
             
-            IntPtr window = SDL_CreateWindow("testwindow", 
-                SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-                200, 200, SDL_WindowFlags.SDL_WINDOW_SHOWN | SDL_WindowFlags.SDL_WINDOW_RESIZABLE);
+            WindowContext context = new WindowContext();
 
             while (isRunning)
             {
-                while (SDL_PollEvent(out var evt) != 0)
+                while (context.GetSDLEvent(out var evt) != 0)
                 {
                     //Event handling block
                 }
