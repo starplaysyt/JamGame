@@ -19,6 +19,12 @@ public class Statistic
         set => _health = value;
     }
 
+    public int Resistance
+    {
+        get => _resistance;
+        set => _resistance = value;
+    }
+    
     public bool GetDamage(int damage) // bool use as attack result: true - success, false - fail
     {
         var chance = new Random().Next(1, 11);

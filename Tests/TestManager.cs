@@ -6,5 +6,14 @@ public static class TestManager
     {
         Console.WriteLine($"TestManager.ExecuteCharacterTest.TestInventoryAddItem {CharacterTest.TestInventoryAddItem()}");
         Console.WriteLine($"TestManager.ExecuteCharacterTest.TestInventoryRemoveItem {CharacterTest.TestInventoryRemoveItem()}");
+        Console.WriteLine($"TestManager.ExecuteCharacterTest.TestInventoryAddItemIfTypeAlreadyExists {CharacterTest.TestInventoryAddItemIfTypeAlreadyExists()}");
+        
+        Console.WriteLine("Dodge test");
+        for(int i =0; i<15; i++)  Console.WriteLine($"TestManager.ExecuteCharacterTest.TestDamageNoProtection {i}: {CharacterTest.TestDamageNoProtection()}");
+        Console.WriteLine("Dodge test end");
+        
+        Console.WriteLine($"TestManager.ExecuteCharacterTest.TestAddProtectionProtection {CharacterTest.TestAddProtectionProtection()}");
+        
+        
     }
 }

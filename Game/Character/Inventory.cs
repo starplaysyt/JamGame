@@ -35,7 +35,6 @@ public class Inventory
             _items.Remove(res);
             return res;
         }
-
         return null;
     }
 }
