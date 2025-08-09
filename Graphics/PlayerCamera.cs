@@ -5,6 +5,7 @@ namespace JamGame.Graphics;
 
 public class PlayerCamera : ILayer
 {
+    private bool _isActiveLayer;
     /// <summary>
     /// Map Location with zoom shift
     /// </summary>
@@ -35,6 +36,23 @@ public class PlayerCamera : ILayer
 
     public string Name { get; set; } = "PlayerCamera";
     public bool IsVisible { get; set; } = true;
+
+    public bool IsActiveLayer
+    {
+        get => _isActiveLayer;
+        set
+        {
+            _isActiveLayer = value;
+
+            if (!_isActiveLayer)
+            {
+                isMovingUpwards = false;
+                isMovingDownwards = false;
+                isMovingLeft = false;
+                isMovingRight = false;
+            }
+        }
+    }
 
     public void Draw()
     {

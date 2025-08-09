@@ -3,6 +3,9 @@ using JamGame.Graphics.Textures;
 
 namespace JamGame.Graphics;
 
+/// <summary>
+/// Graphical instance of surface layer. Contains texture and graphical methods to manipulate surface layer
+/// </summary>
 public class Surface : IDrawable
 {
     public Texture TileSet { get; set; }
@@ -52,28 +55,42 @@ public class Surface : IDrawable
 
     public void Update(GraphicsRenderer renderer)
     {
-        Console.WriteLine("Update");
-        renderer.RendererTarget = SurfaceTexture;
-        renderer.RendererColor = new Color(0, 254, 0, 0);
-        renderer.ClearRenderer();
+        WindowContext.Renderer.RendererTarget = SurfaceTexture;
+        WindowContext.Renderer.RendererColor = new Color(0, 254, 0, 0);
+        WindowContext.Renderer.ClearRenderer();
 
         for (int i = 0; i < ManualSize.Width; i++)
         {
             for (int j = 0; j < ManualSize.Height; j++)
             {
                 TileSet.SourceRectangle = new Rectangle(LayerGrid[i, j] % 16 * 32,LayerGrid[i, j] / 16 * 32, 32, 32);
-                renderer.RenderTexture(TileSet, new Rectangle(i*32, j*32, 32, 32));
+                WindowContext.Renderer.RenderTexture(TileSet, new Rectangle(i*32, j*32, 32, 32));
             }
         }
 
-        renderer.RendererTarget = null;
+        WindowContext.Renderer.RendererTarget = null;
     }
     
     /// <summary>
     /// perform redrawing and resizing by zoom if needed(changing sizes of surfaceTexture when needed
     /// </summary>
-    public void Draw(GraphicsRenderer renderer)
+    public void Draw()
     {
-        renderer.RenderTexture(SurfaceTexture, new Rectangle(StartPoint.X, StartPoint.Y, (int)(PixelSize.Width * ZoomFactor), (int)(PixelSize.Height * ZoomFactor)));
+        /*for (int i = 0; i < ManualSize.Width; i++)
+        {
+            for (int j = 0; j < ManualSize.Height; j++)
+            {
+                TileSet.SourceRectangle = new Rectangle(LayerGrid[i, j] % 16 * 32,LayerGrid[i, j] / 16 * 32, 32, 32);
+                WindowContext.Renderer.RenderTexture(TileSet, new Rectangle(i*32, j*32, 32, 32));
+            }
+        }*/
+        
+        WindowContext.Renderer.RenderTexture(SurfaceTexture, new Rectangle(StartPoint.X, StartPoint.Y, (int)(PixelSize.Width * ZoomFactor), (int)(PixelSize.Height * ZoomFactor)));
     }
+    
+    //TODO: Get from game object
+    
+    //TODO: Destroy texture
+    
+    //TODO: Other important stuff
 }

@@ -18,6 +18,8 @@ public static class WindowContext
     /// Mouse location with assignation to window
     /// </summary>
     public static Point MouseLocation { get; set; }
+    
+    public static bool IsMousePressed { get; set; }
 
     public static SDL_Event LastEvent;
     static WindowContext()
@@ -29,8 +31,7 @@ public static class WindowContext
             ConsoleLogger.LogError("Graphics Renderer", "Reason(error): " + SDL_GetError());
             ConsoleLogger.LogFatal("Graphics Renderer", "Game crashed with fatal error.");
         }
-
-        SDL_ttf.TTF_Init();
+        
         SDL_image.IMG_Init(SDL_image.IMG_InitFlags.IMG_INIT_PNG);
         
         _windowTarget = SDL.SDL_CreateWindow("testwindow", SDL.SDL_WINDOWPOS_UNDEFINED, SDL.SDL_WINDOWPOS_UNDEFINED,
@@ -49,6 +50,11 @@ public static class WindowContext
         {
             MouseLocation = new Point(LastEvent.motion.x, LastEvent.motion.y);
         }
+
+        if (LastEvent.type == SDL_EventType.SDL_MOUSEBUTTONDOWN)
+            IsMousePressed = true;
+        if (LastEvent.type == SDL_EventType.SDL_MOUSEBUTTONUP)
+            IsMousePressed = false;
         
         return retval;
     }

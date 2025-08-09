@@ -9,6 +9,8 @@ public interface ILayer
 {
     public string Name { get; set; }
     public bool IsVisible { get; set; }
+    
+    public bool IsActiveLayer { get; set; }
 
     public void Draw()
     {

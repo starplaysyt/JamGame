@@ -11,6 +11,8 @@ public class SurfaceLayer : ILayer
     public string Name { get; set; }
     public bool IsVisible { get; set; } = true;
     
+    public bool IsActiveLayer { get; set; }
+
     public double LayerZoom { get; set; }
     
     public Surface CurrentSurface { get; set; }
@@ -21,7 +23,6 @@ public class SurfaceLayer : ILayer
     {
         SurfaceTileSet = new Texture();
         IntPtr tilesetTexture = SDL2.SDL_image.IMG_LoadTexture(WindowContext.Renderer.SDLRenderer,"Assets/gameSurfaceTextures.png");
-        Console.WriteLine(SDL_image.IMG_GetError());
         SurfaceTileSet.AssignTexture(tilesetTexture, TextureType.Static, new Rectangle(0,0, 160, 32));
         CurrentSurface = new Surface(new Size(100, 100), SurfaceTileSet, WindowContext.Renderer);
         CurrentSurface.Update(WindowContext.Renderer);
@@ -30,7 +31,7 @@ public class SurfaceLayer : ILayer
     public void Draw()
     {
         //WindowContext.Renderer.RenderTexture(SurfaceTileSet, new Rectangle(0,0, 160, 32));
-        CurrentSurface.Draw(WindowContext.Renderer);
+        CurrentSurface.Draw();
     }
 
     public void GetController(LayerController controller)

@@ -1,4 +1,6 @@
 ﻿using JamGame.Graphics;
+using JamGame.UI.Fonts;
+using SDL2;
 
 namespace JamGame.Game;
 
@@ -8,10 +10,15 @@ namespace JamGame.Game;
 /// 
 public class GameController
 {
-    GraphicsController _graphicsController = new GraphicsController();
+    public GraphicsController _graphicsController;
 
     public GameController()
     {
+        //TODO: MIGHT INITIALIZE EVERYTHING HERE
         
+        SDL_ttf.TTF_Init(); //Just let it be here, or make not fucked initializer for it
+        FontManager.LoadFonts();
+        
+        _graphicsController = new GraphicsController();
     }
 }

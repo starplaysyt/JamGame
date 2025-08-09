@@ -15,7 +15,9 @@ namespace JamGame
 
             bool isRunning = true;
             
-            LayerController lc = new LayerController();
+            GameController gameController = new GameController();
+
+            LayerController lc = gameController._graphicsController.LayerController;
             
             while (isRunning)
             {
@@ -32,12 +34,10 @@ namespace JamGame
                 lc.UpdateByTick();
 
                 WindowContext.Renderer.RendererColor = new Color(255, 0, 0);
-
-                WindowContext.Renderer.DrawLine(10, 10, 100, 100);
                 
                 lc.DrawLayers();
                 
-                WindowContext.Renderer.RendererColor = new Color(255, 0, 255);
+                WindowContext.Renderer.RendererColor = new Color(0, 0, 0);
                 WindowContext.Renderer.RenderComplete();
 
                 //Rendering block

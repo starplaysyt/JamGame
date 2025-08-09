@@ -4,9 +4,9 @@ namespace JamGame.Core;
 
 public struct Rectangle(int x, int y, int width, int height)
 {
-    public int X { get; private set; } = x;
+    public int X { get; set; } = x;
     
-    public int Y { get; private set; } = y;
+    public int Y { get; set; } = y;
     
     public int Width { get; set; } = width;
     
@@ -35,6 +35,8 @@ public struct Rectangle(int x, int y, int width, int height)
     public Rectangle(Point location, Size size) : this(location.X, location.Y, size.Width, size.Height) { }
 
     public Rectangle() : this(0, 0, 0, 0) { }
+    
+    public Rectangle(Rectangle rect) : this(rect.X, rect.Y, rect.Width, rect.Height) { }
 
     internal void Set(SDL.SDL_Rect rect)
     {

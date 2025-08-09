@@ -6,5 +6,5 @@
 /// </summary>
 public interface IDrawable
 {
-    public void Draw(GraphicsRenderer renderer);
+    public void Draw();
 }

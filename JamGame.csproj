@@ -17,11 +17,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Assets\" />
+      <Folder Include="Assets\Fonts\" />
     </ItemGroup>
 
     <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-      <Exec Command="xcopy &quot;$(ProjectDir)libs\*&quot; &quot;$(TargetDir)&quot; /Y /I&#xA;xcopy &quot;$(ProjectDir)Assets\*&quot; &quot;$(TargetDir)\Assets&quot; /Y /I" />
+      <Exec Command="xcopy &quot;$(ProjectDir)libs\*&quot; &quot;$(TargetDir)&quot; /Y /I&#xA;xcopy &quot;$(ProjectDir)Assets\*&quot; &quot;$(TargetDir)\Assets&quot; /Y /I /E" />
     </Target>
 
 </Project>

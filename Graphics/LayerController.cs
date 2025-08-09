@@ -1,5 +1,6 @@
 ﻿using JamGame.Core;
 using JamGame.Graphics.Layers;
+using JamGame.UI;
 using SDL2;
 
 namespace JamGame.Graphics;
@@ -18,11 +19,13 @@ public class LayerController
     public SurfaceLayer SurfaceLayer = new();
 
     public PlayerCamera PlayerCamera = new();
+    
+    public UILayer UILayer = new();
 
     public LayerController()
     {
         PipelineLayers = new List<ILayer>() {
-            //UI Layer
+            UILayer,
             PlayerCamera,
             //Effects Layer
             //Characters Layer
@@ -35,12 +38,21 @@ public class LayerController
     
     public void Update(ref SDL.SDL_Event e)
     {
+        bool isLayerFound = false;
         foreach (var layer in PipelineLayers)
         {
-            var res = layer.UpdateEvents(ref e);
-            layer.GetController(this);
-            if (res == false)
-                break;
+            if (!isLayerFound)
+            {
+                var res = layer.UpdateEvents(ref e);
+                layer.IsActiveLayer = true;
+                layer.GetController(this);
+                if (res == false)
+                    isLayerFound = true;
+            }
+            else
+            {
+                layer.IsActiveLayer = false;
+            }
         }
     }
 
