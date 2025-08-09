@@ -13,6 +13,9 @@ public static class TestManager
         Console.WriteLine("Dodge test end");
         
         Console.WriteLine($"TestManager.ExecuteCharacterTest.TestAddProtectionProtection {CharacterTest.TestAddProtectionProtection()}");
+        Console.WriteLine($"TestManager.ExecuteCharacterTest.TestRemoveProtectionProtection {CharacterTest.TestRemoveProtectionProtection()}");
+        Console.WriteLine($"TestManager.ExecuteCharacterTest.TestDamageWithProtection {CharacterTest.TestDamageWithProtection()}");
+        
         
         
     }
