@@ -2,6 +2,7 @@
 using JamGame.Core;
 using JamGame.Game;
 using JamGame.Graphics;
+using JamGame.Tests;//remove
 using SDL2;
 using static SDL2.SDL;
 
@@ -11,6 +12,7 @@ namespace JamGame
     {
         public static void Main(string[] args)
         {
+            TestManager.ExecuteCharacterTest();
             SDL_Init(SDL_INIT_EVERYTHING);
 
             bool isRunning = true;

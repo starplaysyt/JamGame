@@ -34,4 +34,6 @@ public class Character
     public int Resistance => _statistic.Resistance;
 
     public Inventory Inventory => _inventory;
+    
+    public int Health => _statistic.Health;
 }
