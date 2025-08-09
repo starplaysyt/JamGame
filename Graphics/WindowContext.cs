@@ -1,4 +1,5 @@
-﻿using SDL2;
+﻿using JamGame.Core;
+using SDL2;
 using static SDL2.SDL;
 using TDK.Logger;
 
@@ -12,6 +13,13 @@ public static class WindowContext
     private static IntPtr _windowTarget;
     
     public static GraphicsRenderer Renderer;
+    
+    /// <summary>
+    /// Mouse location with assignation to window
+    /// </summary>
+    public static Point MouseLocation { get; set; }
+
+    public static SDL_Event LastEvent;
     static WindowContext()
     {
         if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
@@ -33,6 +41,15 @@ public static class WindowContext
 
     public static int GetSDLEvent(out SDL.SDL_Event evt)
     {
-        return SDL.SDL_PollEvent(out evt);
+        int retval =  SDL.SDL_PollEvent(out LastEvent);
+        
+        evt = LastEvent;
+
+        if (LastEvent.type == SDL_EventType.SDL_MOUSEMOTION)
+        {
+            MouseLocation = new Point(LastEvent.motion.x, LastEvent.motion.y);
+        }
+        
+        return retval;
     }
 }

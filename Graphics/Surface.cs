@@ -43,7 +43,7 @@ public class Surface : IDrawable
         {
             for (var j = 0; j < manualSize.Height; j++)
             {
-                LayerGrid[i, j] = r.Next(0, 5);
+                LayerGrid[i, j]= r.Next(0,4);
             }
         }
         
@@ -52,6 +52,7 @@ public class Surface : IDrawable
 
     public void Update(GraphicsRenderer renderer)
     {
+        Console.WriteLine("Update");
         renderer.RendererTarget = SurfaceTexture;
         renderer.RendererColor = new Color(0, 254, 0, 0);
         renderer.ClearRenderer();

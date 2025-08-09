@@ -25,8 +25,11 @@ namespace JamGame
                     {
                         isRunning = false;
                     }
+                    lc.Update(ref evt);
                     //Event handling block
                 }
+                
+                lc.UpdateByTick();
 
                 WindowContext.Renderer.RendererColor = new Color(255, 0, 0);
 

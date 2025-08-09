@@ -1,4 +1,6 @@
-﻿namespace JamGame.Graphics;
+﻿using JamGame.Core;
+
+namespace JamGame.Graphics;
 
 /// <summary>
 /// Highest graphics architectural level. Everything what we do with graphics should be here.
@@ -9,7 +11,9 @@ public class GraphicsController
 {
     public LayerController LayerController = new LayerController();
     
+    public Point LayerLocation { get; set; }
     
+    public double LayerZoom { get; set; }
 
     public GraphicsController()
     {
