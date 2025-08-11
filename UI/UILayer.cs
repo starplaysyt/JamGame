@@ -70,7 +70,9 @@ public class UILayer : ILayer, IUIParent
             Alignment = AlignmentType.BottomRight,
             AlignmentMargin = new Point(5, 5)
         };
-        
+
+        b1.MouseClick += (sender, args) => _panel.IsVisible = false; 
+
         _panel.RegisterControl(b1);
         
         

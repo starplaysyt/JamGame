@@ -94,6 +94,9 @@ public class UIPanel : IUIControl, IUIParent
     
     public bool FindMouseInside(Point point)
     {
+        if (!IsVisible)
+            return false;
+        
         foreach (var control in Children)
         {
             if (control.CheckMouseInside(point))
@@ -139,6 +142,9 @@ public class UIPanel : IUIControl, IUIParent
 
     public void Draw()
     {
+        if (!IsVisible)
+            return;
+        
         GraphicsRenderer renderer = WindowContext.Renderer;
         
         renderer.RendererColor = ShadowColor;

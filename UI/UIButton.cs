@@ -137,6 +137,8 @@ public class UIButton : IUIControl
     
     public bool CheckMouseInside(Point mousePos)
     {
+        if (!IsVisible)
+            return false;
         return mousePos.X > _absoluteBounds.X &&
                mousePos.Y < _absoluteBounds.Y + _absoluteBounds.Height &&
                mousePos.X < _absoluteBounds.X + _absoluteBounds.Width &&
@@ -145,6 +147,8 @@ public class UIButton : IUIControl
 
     public bool ProcessEvents(ref SDL.SDL_Event e)
     {
+        if (!IsVisible)
+            return false;
         switch (e.type)
         {
             case SDL.SDL_EventType.SDL_MOUSEMOTION:
@@ -190,6 +194,8 @@ public class UIButton : IUIControl
 
     public void Draw()
     {
+        if (!IsVisible)
+            return;
         GraphicsRenderer renderer = WindowContext.Renderer;
         
         UpdateTextureIfNeeded();
