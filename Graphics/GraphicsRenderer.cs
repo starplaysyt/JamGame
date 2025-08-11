@@ -334,6 +334,8 @@ public class GraphicsRenderer
 
     public void FillRoundedRectangle(int x, int y, int w, int h, int cornerRadius)
     {
+        if (RendererColor == Color.Transparent) return;
+        
         if (cornerRadius == 0)
         {
             FillRectangle(x, y, w, h);

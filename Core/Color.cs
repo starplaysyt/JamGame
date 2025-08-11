@@ -37,4 +37,10 @@ public struct Color(byte r, byte g, byte b, byte a = 255) : IEquatable<Color>
     }
 
     public override string ToString() => $"R: {R}, G: {G}, B: {B}, A: {A}";
+    
+    public static Color Transparent = new Color(255, 255, 255, 0);
+    
+    public static Color White = new Color(255, 255, 255, 255);
+    
+    public static Color Black = new Color(0, 0, 0, 255);
 }
