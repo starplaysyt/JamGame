@@ -8,17 +8,17 @@ namespace JamGame.UI;
 /// <summary>
 /// Home of all user interface in game
 /// </summary>
-public class UILayer : ILayer, IUIParent
+public class UILayer : ILayer
 {
-    public List<IUIControl> Controls = new List<IUIControl>();
+    public List<IControl> Controls = new List<IControl>();
     public string Name { get; set; } = "UILayer";
     public bool IsVisible { get; set; } = true;
     
     public bool IsActiveLayer { get; set; }
 
-    public IUIControl? SelectedControl { get; set; } = null;
+    public IControl? SelectedControl { get; set; } = null;
 
-    public IUIControl? MouseInsideControl { get; set; } = null;
+    public IControl? MouseInsideControl { get; set; } = null;
 
     private UIButton _testButton;
 
