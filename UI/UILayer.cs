@@ -10,15 +10,15 @@ namespace JamGame.UI;
 /// </summary>
 public class UILayer : ILayer
 {
-    public List<IControl> Controls = new List<IControl>();
+    public List<IUIControl> Controls = new List<IUIControl>();
     public string Name { get; set; } = "UILayer";
     public bool IsVisible { get; set; } = true;
     
     public bool IsActiveLayer { get; set; }
 
-    public IControl? SelectedControl { get; set; } = null;
+    public IUIControl? SelectedControl { get; set; } = null;
 
-    public IControl? MouseInsideControl { get; set; } = null;
+    public IUIControl? MouseInsideControl { get; set; } = null;
 
     private UIButton _testButton;
 
