@@ -3,8 +3,10 @@ using SDL2;
 
 namespace JamGame.UI;
 
-public interface IControl
+public interface IUIControl
 {
+    IUIParent? Parent { get; set; }
+    
     public bool IsVisible { get; set; }
     
     public bool IsEnabled { get; set; }
@@ -24,5 +26,13 @@ public interface IControl
     public bool ProcessEvents(ref SDL.SDL_Event e)
     {
         return true;
+    }
+
+    /// <summary>
+    /// This shit might use WindowContexts' WindowSize field for that stuff. UI thing only
+    /// </summary>
+    public void PerformAlignmentRecalculation()
+    {
+        
     }
 }

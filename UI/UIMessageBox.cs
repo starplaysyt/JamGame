@@ -1,7 +1,8 @@
 ﻿namespace JamGame.UI;
 
-public class UIMessageBox : IControl
+public class UIMessageBox : IUIControl
 {
+    public IUIParent? Parent { get; set; }
     public bool IsVisible { get; set; }
     
     public bool IsEnabled { get; set; }

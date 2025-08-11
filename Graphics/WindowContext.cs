@@ -19,6 +19,19 @@ public static class WindowContext
     /// </summary>
     public static Point MouseLocation { get; set; }
     
+    public static Size WindowSize
+    {
+        get
+        {
+            SDL.SDL_GetWindowSize(_windowTarget, out var w, out var h);
+            return new Size(w, h);
+        }
+        set
+        {
+            SDL.SDL_SetWindowSize(_windowTarget, value.Width, value.Height);
+        }
+    }
+
     public static bool IsMousePressed { get; set; }
 
     public static SDL_Event LastEvent;

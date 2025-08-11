@@ -4,6 +4,8 @@ namespace JamGame.Core;
 
 public struct Point(int x, int y) : IEquatable<Point>
 {
+    public static Point Zero => new Point(0, 0);
+    
     public int X { get; private set; } = x;
     public int Y { get; private set; } = y;
 
