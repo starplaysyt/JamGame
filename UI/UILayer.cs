@@ -8,7 +8,7 @@ namespace JamGame.UI;
 /// <summary>
 /// Home of all user interface in game
 /// </summary>
-public class UILayer : ILayer
+public class UILayer : ILayer, IUIParent
 {
     public List<IUIControl> Controls = new List<IUIControl>();
     public string Name { get; set; } = "UILayer";
