@@ -21,7 +21,7 @@
     </ItemGroup>
 
     <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-      <Exec Command="xcopy &quot;$(ProjectDir)libs\*&quot; &quot;$(TargetDir)&quot; /Y /I&#xA;xcopy &quot;$(ProjectDir)Assets\*&quot; &quot;$(TargetDir)\Assets&quot; /Y /I /E" />
+      <Exec Command="xcopy &quot;$(ProjectDir)libs\*&quot; &quot;$(TargetDir)&quot; /Y /I&#xA;xcopy &quot;$(ProjectDir)Assets\*&quot; &quot;$(TargetDir)\Assets&quot; /Y /I /E&#xA;pwsh -Command 'Copy-Item -Path &quot;$(ProjectDir)libs\*&quot; -Destination &quot;$(TargetDir)&quot; -Recurse -Force'&#xA;pwsh -Command 'Copy-Item &quot;$(ProjectDir)Assets\*&quot; -Destination &quot;$(TargetDir)\Assets&quot; -Recurse -Force'&#xA;" />
     </Target>
 
 </Project>
